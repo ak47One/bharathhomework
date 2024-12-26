@@ -16,7 +16,7 @@ public class UserController {
     private UserService service;
 
 
-    @GetMapping("/test")
+    @GetMapping("/testing")
     public String test() {
         return "Application is running!";
     }
