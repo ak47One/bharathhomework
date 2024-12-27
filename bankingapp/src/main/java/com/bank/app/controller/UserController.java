@@ -1,6 +1,6 @@
 package com.bank.app.controller;
 
-
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +29,10 @@ public class UserController {
 
     @PostMapping("/user")
     public User addUser(@RequestBody User user) {
+    	if(user != null) {
+    		user.setAccntOpenDate(new Date());
+    		user.setAccntUpdtDate(new Date());
+    	}
         return service.addUser(user);
     }
 }
