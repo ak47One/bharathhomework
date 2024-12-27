@@ -1,10 +1,10 @@
-package com.BankUser.Service;
+package com.bank.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.BankUser.Repo.UserRepo;
-import com.BankUser.model.User;
+import com.bank.app.model.User;
+import com.bank.app.repo.UserRepo;
 
 import java.util.Optional;
 

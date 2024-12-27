@@ -1,12 +1,12 @@
-package com.BankUser.Controller;
+package com.bank.app.controller;
 
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.BankUser.Service.UserService;
-import com.BankUser.model.User;
+import com.bank.app.model.User;
+import com.bank.app.service.UserService;
 
 @RestController
 @RequestMapping("/api")

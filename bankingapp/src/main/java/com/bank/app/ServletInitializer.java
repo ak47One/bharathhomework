@@ -1,4 +1,4 @@
-package com.BankUser;
+package com.bank.app;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
