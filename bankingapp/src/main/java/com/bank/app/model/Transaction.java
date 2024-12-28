@@ -1,5 +1,6 @@
 package com.bank.app.model;
 
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -16,6 +17,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -60,11 +62,13 @@ public class Transaction {
 		
 	@Column(name="PAYEE_NAME")
 	private String payeeName;
-	
+		
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="USER_ID", nullable = false)
 	private User userId;
 	
-
+	@Transient
+	private String payerId;
+	
 }

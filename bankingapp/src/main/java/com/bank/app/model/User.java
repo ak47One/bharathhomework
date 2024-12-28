@@ -35,7 +35,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="USER_ID")
 	@JsonIgnore
-	private Long id;
+	private Long userId;
 
 	@Column(name="FIRST_NAME", nullable = false)
 	private String firstName;

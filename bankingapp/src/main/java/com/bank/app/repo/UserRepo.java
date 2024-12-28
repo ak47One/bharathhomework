@@ -7,4 +7,8 @@ import com.bank.app.model.User;
 
 @Repository
 public interface UserRepo extends JpaRepository<User, Long> {
+	
+	User findByUserId(Long userId);
+	
+	User findByEmailId(String emailId);
 }
