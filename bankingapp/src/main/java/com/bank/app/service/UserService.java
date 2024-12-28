@@ -35,5 +35,9 @@ public class UserService {
 		return repo.getLatestUser();
     	
     }
+    public String getBankBal() {
+		return repo.getBankBalance();
+    	
+    }
 }
 

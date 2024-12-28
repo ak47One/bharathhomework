@@ -47,6 +47,11 @@ public class UserController {
 		return userService.last3acnt();
     	
     }
+    @GetMapping("/BankBal")
+    public String getBankBal() {
+		return userService.getBankBal();
+    	
+    }
     
     
 }
