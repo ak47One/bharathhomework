@@ -71,12 +71,9 @@ public class User {
 	@OneToMany(mappedBy = "userObject", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	Set<Transaction> accntTransLst;
 	
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "userObj")
-//	Set<KycDoc> kycList;
-	
 	@JsonIgnore
-	@OneToMany
-	@JoinColumn(name= "userkyc",nullable = false)
-	private KycDoc kycdoc;
+	@OneToMany(mappedBy = "userObj", cascade = CascadeType.ALL, fetch  = FetchType.LAZY)
+	Set<KycDoc> kycList;
+	
+	
 }
