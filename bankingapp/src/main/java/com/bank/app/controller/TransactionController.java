@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.app.DTO.TransactionDTO;
-import com.bank.app.model.Transaction;
 import com.bank.app.model.User;
 import com.bank.app.repo.UserRepo;
 
