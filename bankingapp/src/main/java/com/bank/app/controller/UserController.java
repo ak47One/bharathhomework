@@ -1,6 +1,7 @@
 package com.bank.app.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import com.bank.app.service.UserService;
 public class UserController {
 
     @Autowired
-    private UserService service;
+    private UserService userService;
 
 
     @GetMapping("/testing")
@@ -23,7 +24,7 @@ public class UserController {
 
     @GetMapping("/user/{id}")
     public User getUser(@PathVariable Long id) {
-        return service.getUser(id);
+        return userService.getUser(id);
     }
 
 
@@ -33,8 +34,19 @@ public class UserController {
     		user.setAccntOpenDate(new Date());
     		user.setAccntUpdtDate(new Date());
     	}
-        return service.addUser(user);
+        return userService.addUser(user);
     }
      
+    @GetMapping("/checkBalance")
+    public String checkBalance(@RequestParam String accountNo) {
+		return userService.checkBalance(accountNo);
+    	
+    }
+    @GetMapping("/last3Accnt")
+    public List<User> last3Accnt() {
+		return userService.last3acnt();
+    	
+    }
+    
     
 }
