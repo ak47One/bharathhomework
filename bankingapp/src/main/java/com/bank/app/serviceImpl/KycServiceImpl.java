@@ -46,9 +46,9 @@ public class KycServiceImpl implements KycService {
 	public String getDocUniqueId(String typ, String usrId) {
 		try {
 			User user = userRepo.findByUserId(Long.parseLong(usrId));
-			KycDoc kycDoc = kycRepo.getDocUniqueId(user, typ);
+//			KycDoc kycDoc = kycRepo.getDocUniqueId(user, typ);
 			
-			return kycDoc.getDocUniqueId();
+			return kycRepo.getDocId(user, typ);
 			
 		} catch (Exception e) {
 			log.error("Exception occured in getDocUniqueId method in KycServiceImpl :{}", e.getMessage());
