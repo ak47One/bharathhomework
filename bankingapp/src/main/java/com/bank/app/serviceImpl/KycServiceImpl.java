@@ -26,15 +26,16 @@ public class KycServiceImpl implements KycService {
 			User user = userRepo.findByUserId(Long.parseLong(kycDTO.getUserId()));
 
 			KycDoc kycDoc = new KycDoc();
-			kycDoc.setDocumentType(kycDTO.getDocType());
+			kycDoc.setDocumentType(kycDTO.getDocType().toUpperCase());
 			kycDoc.setDocUniqueId(kycDTO.getDocUniqueId());
 			kycDoc.setUserObj(user);
-
+			
 			kycRepo.save(kycDoc);
+			
+			return "KYC Saved Successfully";
 		} catch (Exception e) {
 			return "KYC Update Failed";
 		}
-		return "KYC Saved Successfully";
 	}
 
 

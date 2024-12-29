@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.app.DTO.KycDTO;
 import com.bank.app.service.KycService;
 
-@Controller
+@RestController
 public class KycController {
 
 	@Autowired
@@ -35,7 +36,7 @@ public class KycController {
 			
 			//Saving the Data if valid
 			if (isIdValid)
-				kycService.updateKYCData(kycDTO);
+				return kycService.updateKYCData(kycDTO);
 		}
 		return "KYC ID is Invalid";
 	}
