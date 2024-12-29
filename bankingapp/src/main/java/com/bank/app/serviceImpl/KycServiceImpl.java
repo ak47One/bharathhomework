@@ -1,5 +1,7 @@
 package com.bank.app.serviceImpl;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import com.bank.app.service.KycService;
 
 @Service
 public class KycServiceImpl implements KycService {
+	
+	private static final Logger log = LogManager.getLogger(KycServiceImpl.class);
 
 	@Autowired
 	private KycRepo kycRepo;
@@ -35,6 +39,20 @@ public class KycServiceImpl implements KycService {
 			return "KYC Saved Successfully";
 		} catch (Exception e) {
 			return "KYC Update Failed";
+		}
+	}
+
+	@Override
+	public String getDocUniqueId(String typ, String usrId) {
+		try {
+			User user = userRepo.findByUserId(Long.parseLong(usrId));
+			KycDoc kycDoc = kycRepo.getDocUniqueId(user, typ);
+			
+			return kycDoc.getDocUniqueId();
+			
+		} catch (Exception e) {
+			log.error("Exception occured in getDocUniqueId method in KycServiceImpl :{}", e.getMessage());
+			return "Error occurred in getting Id";
 		}
 	}
 

@@ -3,6 +3,7 @@ package com.bank.app.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.app.DTO.KycDTO;
@@ -38,6 +39,11 @@ public class KycController {
 				return kycService.updateKYCData(kycDTO);
 		}
 		return "KYC ID is Invalid";
+	}
+	
+	@GetMapping("/getKyc")
+	public String getDocUniqueId(@RequestParam String typ, @RequestParam String usrId) {
+		return kycService.getDocUniqueId(typ, usrId);
 	}
 
 }
