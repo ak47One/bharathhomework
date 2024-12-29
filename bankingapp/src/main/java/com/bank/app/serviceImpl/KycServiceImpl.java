@@ -29,14 +29,23 @@ public class KycServiceImpl implements KycService {
 			kycDoc.setDocumentType(kycDTO.getDocType().toUpperCase());
 			kycDoc.setDocUniqueId(kycDTO.getDocUniqueId());
 			kycDoc.setUserObj(user);
-			
+
 			kycRepo.save(kycDoc);
-			
+
 			return "KYC Saved Successfully";
 		} catch (Exception e) {
 			return "KYC Update Failed";
 		}
 	}
 
+	@Override
+	public String getKYCData(String typ, String usrId) {
+		
+		User user = userRepo.findByUserId(Long.parseLong(usrId));
+
+		KycDoc kycDoc = kycRepo.getDocUniqueId(user, typ);
+
+		return kycDoc.getDocUniqueId();
+	}
 
 }

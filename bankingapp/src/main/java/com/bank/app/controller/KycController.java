@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.app.DTO.KycDTO;
@@ -41,4 +42,8 @@ public class KycController {
 		return "KYC ID is Invalid";
 	}
 
+	@GetMapping("/getKyc")
+	public String getKycOfUsr(@RequestParam String typ,@RequestParam String usrId) {
+		return kycService.getKYCData(typ, usrId);
+	}
 }
