@@ -1,29 +1,24 @@
 package com.bank.app.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.app.DTO.TransactionDTO;
-import com.bank.app.model.Transaction;
-import com.bank.app.model.User;
-import com.bank.app.repo.UserRepo;
+import com.bank.app.service.TransactionService;
 
 @RestController
 public class TransactionController {
 	
-	
-	@Autowired
-	private UserRepo userRepo;
-	
+	private TransactionService transService;
+		
 	 @PostMapping("/addTransaction")
 	    public String addTransaction(@RequestBody TransactionDTO transDTO) {
 		 if(transDTO != null) {
-			 User user = userRepo.findByUserId(Long.parseLong(transDTO.getPayerId()));
+			 return transService.updtAccntBalance(transDTO);
 		 }
 		 
-		 return "Transaction Updated Successfully";
+		 return "Transaction Update Failed";
 		 
 	 }
 
