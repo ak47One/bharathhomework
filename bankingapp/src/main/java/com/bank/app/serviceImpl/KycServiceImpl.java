@@ -47,6 +47,7 @@ public class KycServiceImpl implements KycService {
 		try {
 			User user = userRepo.findByUserId(Long.parseLong(usrId));
 //			KycDoc kycDoc = kycRepo.getDocUniqueId(user, typ);
+			kycRepo.getDocIdByImpl(user, typ);
 			
 			return kycRepo.getDocId(user, typ);
 			
