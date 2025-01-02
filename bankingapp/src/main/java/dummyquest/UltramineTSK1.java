@@ -64,9 +64,17 @@ public class UltramineTSK1 {
 		// The specific date to the check for orders
 		LocalDate fltDate = LocalDate.of(2024, 9, 1);
 
+		LocalDate myDate = LocalDate.of(2024, 8, 2);
+		boolean isDateAfter = myDate.isAfter(fltDate);
+		boolean isDateBefore = myDate.isBefore(fltDate);
+		
+		
+		System.out.println("is Date After" + isDateBefore);
+		System.out.println("is Date After" + isDateAfter);
 		// Using traditional for loop to filter the order list
 		List<Order> finalOrderList = new ArrayList<>();
 		for (Order ord : orderList) {
+			
 			if (ord.getOrderDate().equals(fltDate) && ord.getAmount() >= 8000) {
 				finalOrderList.add(ord);
 			}
