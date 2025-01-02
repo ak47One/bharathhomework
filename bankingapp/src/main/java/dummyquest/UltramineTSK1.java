@@ -47,63 +47,53 @@ public class UltramineTSK1 {
 
 	}
 
-	public static void main(String[] args) {
-
-		List<Order> orderList = new ArrayList<>();
-
-		// To create a LocalDate the format is
-		// LocalDate.of(Year, Month, Date, Hours, Minutes, Seconds);
-
-		orderList.add(new Order("O101", "C1", LocalDate.of(2024, 9, 1), 8500));
-		orderList.add(new Order("O102", "C4", LocalDate.of(2024, 7, 13), 11500));
-		orderList.add(new Order("O103", "C2", LocalDate.of(2024, 9, 1), 9100));
-		orderList.add(new Order("O104", "C3", LocalDate.of(2024, 05, 30), 13000));
-		orderList.add(new Order("O105", "C5", LocalDate.of(2024, 9, 1), 500));
-		orderList.add(new Order("O106", "C1", LocalDate.of(2024, 9, 1), 10200));
-
-		// The specific date to the check for orders
-		LocalDate fltDate = LocalDate.of(2024, 9, 1);
-
-		// Using traditional for loop to filter the order list
-		List<Order> finalOrderList = new ArrayList<>();
-		for (Order ord : orderList) {
-			if (ord.getOrderDate().equals(fltDate) && ord.getAmount() >= 8000) {
-				finalOrderList.add(ord);
-			}
-		}
-
-		/*
-		 * 
-		 * for (Customer cus : cusList) { for (Order ord : orderList) { if
-		 * (ord.getCutomerId().equals(cus.getCusId())) { cus.setOrder(ord); } } }
-		 * 
-		 */
-
-		UltramineTSK1 tsk = new UltramineTSK1();
-
-		List<Customer> cusList = tsk.getCustomerList();
-		List<Customer> finalCustomeList = new ArrayList<>();
-
-		for (Customer cus : cusList) {
-			List<Order> tempOrdLst = new ArrayList<>();
-			for (Order ord : finalOrderList) {
-				if (ord.getCutomerId().equals(cus.getCusId())) {
-					// cus.setOrder(ord);
-					
-					// Add order to the customer temp order list
-					tempOrdLst.add(ord);
-				}
-			}
-			// now adding the customer
-			if (!tempOrdLst.isEmpty()) {
-				cus.setOrder(tempOrdLst);
-				finalCustomeList.add(cus);
-			}
-
-		}
-
-		System.out.println(cusList);
-		System.out.println("Print the filtered customer list");
-		System.out.println(finalCustomeList);
-	}
+	/*
+	 * public static void main(String[] args) {
+	 * 
+	 * List<Order> orderList = new ArrayList<>();
+	 * 
+	 * // To create a LocalDate the format is // LocalDate.of(Year, Month, Date,
+	 * Hours, Minutes, Seconds);
+	 * 
+	 * orderList.add(new Order("O101", "C1", LocalDate.of(2024, 9, 1), 8500));
+	 * orderList.add(new Order("O102", "C4", LocalDate.of(2024, 7, 13), 11500));
+	 * orderList.add(new Order("O103", "C2", LocalDate.of(2024, 9, 1), 9100));
+	 * orderList.add(new Order("O104", "C3", LocalDate.of(2024, 05, 30), 13000));
+	 * orderList.add(new Order("O105", "C5", LocalDate.of(2024, 9, 1), 500));
+	 * orderList.add(new Order("O106", "C1", LocalDate.of(2024, 9, 1), 10200));
+	 * 
+	 * // The specific date to the check for orders LocalDate fltDate =
+	 * LocalDate.of(2024, 9, 1);
+	 * 
+	 * // Using traditional for loop to filter the order list List<Order>
+	 * finalOrderList = new ArrayList<>(); for (Order ord : orderList) { if
+	 * (ord.getOrderDate().equals(fltDate) && ord.getAmount() >= 8000) {
+	 * finalOrderList.add(ord); } }
+	 * 
+	 * 
+	 * 
+	 * for (Customer cus : cusList) { for (Order ord : orderList) { if
+	 * (ord.getCutomerId().equals(cus.getCusId())) { cus.setOrder(ord); } } }
+	 * 
+	 * 
+	 * 
+	 * UltramineTSK1 tsk = new UltramineTSK1();
+	 * 
+	 * List<Customer> cusList = tsk.getCustomerList(); List<Customer>
+	 * finalCustomeList = new ArrayList<>();
+	 * 
+	 * for (Customer cus : cusList) { List<Order> tempOrdLst = new ArrayList<>();
+	 * for (Order ord : finalOrderList) { if
+	 * (ord.getCutomerId().equals(cus.getCusId())) { // cus.setOrder(ord);
+	 * 
+	 * // Add order to the customer temp order list tempOrdLst.add(ord); } } // now
+	 * adding the customer if (!tempOrdLst.isEmpty()) { cus.setOrder(tempOrdLst);
+	 * finalCustomeList.add(cus); }
+	 * 
+	 * }
+	 * 
+	 * System.out.println(cusList);
+	 * System.out.println("Print the filtered customer list");
+	 * System.out.println(finalCustomeList); }
+	 */
 }

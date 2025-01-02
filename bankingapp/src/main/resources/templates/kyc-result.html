@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Status</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Upload Status</h2>
+
+    <!-- Display success message if message is not null -->
+    <div class="alert alert-success" th:if="${message != null}" role="alert">
+        <p th:text="${message}"></p>
+    </div>
+
+    <!-- Display error message if message is null -->
+    <div class="alert alert-danger" th:if="${error != null}" role="alert">
+        <p>An error occurred during the upload. Please try again.</p>
+    </div>
+
+    <!-- Button to go back to the upload form -->
+    <a th:href="@{/addKycDocument}" class="btn btn-primary">Go Back to Upload</a>
+</div>
+
+<script src="/js/scripts.js"></script>
+</body>
+</html>
