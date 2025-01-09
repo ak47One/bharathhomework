@@ -25,20 +25,17 @@ public class TransactionServiceImpl implements TransactionService{
 		Transaction trans = new Transaction();
 		
 		if(transDTO.getTransType().equalsIgnoreCase(TransType.WITHDRAWAL.name())) {
-			if(user.getAccntBalance().compareTo(transDTO.getTransAmount()) >= 0) {
-				trans.setUserObject(user);
-				trans.setTransAmount(transDTO.getTransAmount());
-				trans.setTransDate(new Date());
-				trans.setPaymentType(transDTO.getPaymentType());
-				trans.setTransReferId(String.format("TXN%s", generateRefId()));
-				trans.setTransType(transDTO.getTransType());
-				//trans.setTransStatus(transDTO.g);
-				trans.setPayeeName(transDTO.getPayeeName());
-				trans.setPayeeAccntNo(transDTO.getPayeeAccntNo());
-				
-				
-				
-			}
+			/*
+			 * if(user.getAccntBalance().compareTo(transDTO.getTransAmount()) >= 0) {
+			 * trans.setUserObject(user); trans.setTransAmount(transDTO.getTransAmount());
+			 * trans.setTransDate(new Date());
+			 * trans.setPaymentType(transDTO.getPaymentType());
+			 * trans.setTransReferId(String.format("TXN%s", generateRefId()));
+			 * trans.setTransType(transDTO.getTransType());
+			 * //trans.setTransStatus(transDTO.g);
+			 * trans.setPayeeName(transDTO.getPayeeName());
+			 * trans.setPayeeAccntNo(transDTO.getPayeeAccntNo()); }
+			 */
 			
 			
 		}

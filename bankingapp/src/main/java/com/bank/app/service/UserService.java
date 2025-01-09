@@ -28,15 +28,18 @@ public class UserService {
     }
     
     public String checkBalance(String accountNo) {
-		return repo.findByAccntNum(accountNo);
+		/* return repo.findByAccntNum(accountNo); */
+    	return null;
     	
     }
     public List<User> last3acnt() {
-		return repo.getLatestUser();
+		/* return repo.getLatestUser(); */
+		return null;
     	
     }
     public String getBankBal() {
-		return repo.getBankBalance();
+		/* return repo.getBankBalance(); */
+		return null;
     	
     }
 }

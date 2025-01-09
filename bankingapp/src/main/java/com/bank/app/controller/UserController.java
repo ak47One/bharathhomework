@@ -1,6 +1,5 @@
 package com.bank.app.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +36,9 @@ public class UserController {
     @PostMapping("/user")
     public User addUser(@RequestBody User user) {
     	if(user != null) {
-    		user.setAccntOpenDate(new Date());
-    		user.setAccntUpdtDate(new Date());
+    	return userService.addUser(user);
     	}
-        return userService.addUser(user);
+        return null;
     }
      
     @GetMapping("/checkBalance")
