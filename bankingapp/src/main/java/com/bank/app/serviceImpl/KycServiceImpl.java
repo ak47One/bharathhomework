@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.bank.app.DTO.KycDTO;
 import com.bank.app.model.KycDoc;
-import com.bank.app.model.User;
+import com.bank.app.model.Customer;
 import com.bank.app.repo.KycRepo;
 import com.bank.app.repo.UserRepo;
 import com.bank.app.service.KycService;
@@ -27,12 +27,12 @@ public class KycServiceImpl implements KycService {
 	public String updateKYCData(KycDTO kycDTO) {
 
 		try {
-			User user = userRepo.findByUserId(Long.parseLong(kycDTO.getUserId()));
+			Customer custmr = userRepo.findByUserId(Long.parseLong(kycDTO.getUserId()));
 
 			KycDoc kycDoc = new KycDoc();
 			kycDoc.setDocumentType(kycDTO.getDocType().toUpperCase());
 			kycDoc.setDocUniqueId(kycDTO.getDocUniqueId());
-			kycDoc.setUserObj(user);
+			kycDoc.setCustmrObj(custmr);
 			
 			kycRepo.save(kycDoc);
 			
@@ -45,11 +45,11 @@ public class KycServiceImpl implements KycService {
 	@Override
 	public String getDocUniqueId(String typ, String usrId) {
 		try {
-			User user = userRepo.findByUserId(Long.parseLong(usrId));
+			Customer custmr = userRepo.findByUserId(Long.parseLong(usrId));
 //			KycDoc kycDoc = kycRepo.getDocUniqueId(user, typ);
-			kycRepo.getDocIdByImpl(user, typ);
+			kycRepo.getDocIdByImpl(custmr, typ);
 			
-			return kycRepo.getDocId(user, typ);
+			return kycRepo.getDocId(custmr, typ);
 			
 		} catch (Exception e) {
 			log.error("Exception occured in getDocUniqueId method in KycServiceImpl :{}", e.getMessage());

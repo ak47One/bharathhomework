@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bank.app.model.User;
+import com.bank.app.model.Customer;
 import com.bank.app.repo.UserRepo;
 
 @Service
@@ -16,14 +16,14 @@ public class UserService {
     private UserRepo repo;
 
     // Retrieve a user by ID
-    public User getUser(Long id) {
-        Optional<User> userOptional = repo.findById(id);
+    public Customer getUser(Long id) {
+        Optional<Customer> userOptional = repo.findById(id);
         return userOptional.orElseThrow(() ->
                 new RuntimeException("User not found with ID: " + id));
     }
 
     // Add a new user
-    public User addUser(User user) {
+    public Customer addUser(Customer user) {
         return repo.save(user);
     }
     
@@ -32,7 +32,7 @@ public class UserService {
     	return null;
     	
     }
-    public List<User> last3acnt() {
+    public List<Customer> last3acnt() {
 		/* return repo.getLatestUser(); */
 		return null;
     	

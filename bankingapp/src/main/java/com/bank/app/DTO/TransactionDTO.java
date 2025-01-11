@@ -1,6 +1,7 @@
 package com.bank.app.DTO;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -29,4 +30,8 @@ public class TransactionDTO {
 	private String transStatus;
 	
 	private String payerId;
+	
+	private LocalDateTime transDate;
+	
+	
 }

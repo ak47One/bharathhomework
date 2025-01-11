@@ -1,6 +1,6 @@
 package com.bank.app.utility;
 
-public enum TransStatus {
+public enum TransactionStatus {
 	
 	SUCCESS,
 	PENDING,

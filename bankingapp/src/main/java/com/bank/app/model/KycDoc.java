@@ -32,7 +32,7 @@ public class KycDoc {
 	
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="userObj",nullable = false)
-	private User userObj;
+	@JoinColumn(name="CUSTMR_OBJECT",nullable = false)
+	private Customer custmrObj;
 
 }

@@ -65,8 +65,8 @@ public class Transaction {
 		
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="USER_OBJECT", nullable = false)
-	private User userObject;
+	@JoinColumn(name="CUSTMR_OBJECT", nullable = false)
+	private Customer custmrObj;
 	
 	@Transient
 	private String payerId;

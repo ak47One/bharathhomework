@@ -29,38 +29,38 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "USER_ID")
+	@Column(name = "CUSTOMER_ID")
 	@JsonIgnore
-	private Long userId;
+	private Long customerId;
 
-	@Column(name = "FIRST_NAME", nullable = false)
-	private String firstName;
+	@Column(name = "CUSTMR_FIRST_NAME", nullable = false)
+	private String custmrFirstName;
 
-	@Column(name = "LAST_NAME", nullable = false)
-	private String lastName;
+	@Column(name = "CUSTMR_LAST_NAME", nullable = false)
+	private String custmrLastName;
 
-	@Column(name = "EMAIL_ID", nullable = false, unique = true)
-	private String emailId;
+	@Column(name = "CUSTMR_EMAIL_ID", nullable = false, unique = true)
+	private String custmrEmailId;
 	
-	@Column(name = "PASSWORD", nullable = false)
-	private String password;
+	@Column(name = "CUSTMR_PASSWORD", nullable = false)
+	private String custmrPassword;
 
 	@Column(name = "PHONE_NO", nullable = false, unique = true)
 	private String phoneNo;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "userObject", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "custmrObj", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	Set<Transaction> accntTransLst;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "userObj", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "custmrObj", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	Set<KycDoc> kycList;
 
-	@ManyToMany(mappedBy = "users")
+	@ManyToMany(mappedBy = "customers")
 	@JsonIgnore
 	private Set<Loan> loans;
 

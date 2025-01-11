@@ -1,7 +1,11 @@
 package com.bank.app.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,8 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,16 +39,16 @@ public class AccountDetails {
     @Column(name = "ACCNT_BAL", precision = 10, scale = 2)
     private BigDecimal accntBalance;
 
-    @Column(name = "ACCNT_OPEN_DATE", columnDefinition = "DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date accntOpenDate;
+    @Column(name = "ACCNT_OPEN_DATE")
+    @CreationTimestamp
+    private LocalDateTime accntOpenDate;
 
-    @Column(name = "ACCNT_UPDT_DATE", columnDefinition = "DATETIME")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date accntUpdtDate;
+    @Column(name = "ACCNT_UPDT_DATE")
+    @UpdateTimestamp
+    private LocalDateTime accntUpdtDate;
 
     @OneToOne
-    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
-    private User user;
+    @JoinColumn(name = "CUSTMR_ID", referencedColumnName = "CUSTMR_ID")
+    private Customer custmrObj;
 }
 

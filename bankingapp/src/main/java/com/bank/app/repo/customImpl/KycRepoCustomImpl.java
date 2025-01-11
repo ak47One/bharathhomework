@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.bank.app.DTO.KycDTO;
 import com.bank.app.model.KycDoc;
-import com.bank.app.model.User;
+import com.bank.app.model.Customer;
 import com.bank.app.repo.custom.KycRepoCustom;
 
 import jakarta.persistence.EntityManager;
@@ -28,10 +28,10 @@ public class KycRepoCustomImpl implements KycRepoCustom {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public KycDTO getDocIdByImpl(User user, String docType) {
+	public KycDTO getDocIdByImpl(Customer custmr, String docType) {
 		KycDTO kycDTO = new KycDTO();
 		try {
-			getDocIdByTypeQuery(docType, user);
+			getDocIdByTypeQuery(docType, custmr);
 
 			String tblNam = "kyc_dtl";
 			String sqlQuery = String.format(
@@ -40,7 +40,7 @@ public class KycRepoCustomImpl implements KycRepoCustom {
 
 			Query query = entityManager.createNativeQuery(sqlQuery);
 			query.setParameter(1, docType);
-			query.setParameter(2, user.getUserId());
+			query.setParameter(2, custmr.getCustomerId());
 
 			List<Object[]> dataList = query.getResultList();
 
@@ -68,7 +68,7 @@ public class KycRepoCustomImpl implements KycRepoCustom {
 		return kycDTO;
 	}
 
-	private List<KycDoc> getDocIdByTypeQuery(String docType, User user) {
+	private List<KycDoc> getDocIdByTypeQuery(String docType, Customer user) {
 		try {
 
 			String sqlQuery = "SELECT k FROM KycDoc k WHERE k.documentType =?1 AND k.userObj =?2";

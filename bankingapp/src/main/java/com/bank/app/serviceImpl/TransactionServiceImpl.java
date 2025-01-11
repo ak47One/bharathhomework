@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bank.app.DTO.TransactionDTO;
 import com.bank.app.model.Transaction;
-import com.bank.app.model.User;
+import com.bank.app.model.Customer;
 import com.bank.app.repo.UserRepo;
 import com.bank.app.service.TransactionService;
-import com.bank.app.utility.TransType;
+import com.bank.app.utility.TransactionType;
 
 public class TransactionServiceImpl implements TransactionService{
 	
@@ -20,11 +20,11 @@ public class TransactionServiceImpl implements TransactionService{
 	@Override
 	public String updtAccntBalance(TransactionDTO transDTO) {
 		
-		User user = userRepo.findByUserId(Long.parseLong(transDTO.getPayerId()));
+		Customer custmr = userRepo.findByUserId(Long.parseLong(transDTO.getPayerId()));
 		
 		Transaction trans = new Transaction();
 		
-		if(transDTO.getTransType().equalsIgnoreCase(TransType.WITHDRAWAL.name())) {
+		if(transDTO.getTransType().equalsIgnoreCase(TransactionType.DEBIT.name())) {
 			/*
 			 * if(user.getAccntBalance().compareTo(transDTO.getTransAmount()) >= 0) {
 			 * trans.setUserObject(user); trans.setTransAmount(transDTO.getTransAmount());

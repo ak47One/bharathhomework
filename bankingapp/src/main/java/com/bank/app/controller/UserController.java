@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bank.app.model.User;
+import com.bank.app.model.Customer;
 import com.bank.app.service.UserService;
 
 @RestController
@@ -28,13 +28,13 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public User getUser(@PathVariable Long id) {
+    public Customer getUser(@PathVariable Long id) {
         return userService.getUser(id);
     }
 
 
     @PostMapping("/user")
-    public User addUser(@RequestBody User user) {
+    public Customer addUser(@RequestBody Customer user) {
     	if(user != null) {
     	return userService.addUser(user);
     	}
@@ -47,7 +47,7 @@ public class UserController {
     	
     }
     @GetMapping("/last3Accnt")
-    public List<User> last3Accnt() {
+    public List<Customer> last3Accnt() {
 		return userService.last3acnt();
     	
     }
