@@ -1,4 +1,4 @@
-package com.bank.app.service;
+package com.bank.app.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +10,7 @@ import com.bank.app.model.Customer;
 import com.bank.app.repo.UserRepo;
 
 @Service
-public class UserService {
+public class UserServiceImpl {
 
     @Autowired
     private UserRepo repo;

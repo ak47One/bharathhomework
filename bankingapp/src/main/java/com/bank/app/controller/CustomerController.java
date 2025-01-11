@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.app.model.Customer;
-import com.bank.app.service.UserService;
+import com.bank.app.service.CustomerService;
 
 @RestController
 @RequestMapping("/api")
-public class UserController {
+public class CustomerController {
 
     @Autowired
-    private UserService userService;
+    private CustomerService custmrService;
 
 
     @GetMapping("/testing")
@@ -29,31 +29,31 @@ public class UserController {
 
     @GetMapping("/user/{id}")
     public Customer getUser(@PathVariable Long id) {
-        return userService.getUser(id);
+        return custmrService.getUser(id);
     }
 
 
     @PostMapping("/user")
     public Customer addUser(@RequestBody Customer user) {
     	if(user != null) {
-    	return userService.addUser(user);
+    	return custmrService.addUser(user);
     	}
         return null;
     }
      
     @GetMapping("/checkBalance")
     public String checkBalance(@RequestParam String accountNo) {
-		return userService.checkBalance(accountNo);
+		return custmrService.checkBalance(accountNo);
     	
     }
     @GetMapping("/last3Accnt")
     public List<Customer> last3Accnt() {
-		return userService.last3acnt();
+		return custmrService.last3acnt();
     	
     }
     @GetMapping("/BankBal")
     public String getBankBal() {
-		return userService.getBankBal();
+		return custmrService.getBankBal();
     	
     }
     

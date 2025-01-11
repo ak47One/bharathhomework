@@ -38,6 +38,9 @@ public class AccountDetails {
 
     @Column(name = "ACCNT_BAL", precision = 10, scale = 2)
     private BigDecimal accntBalance;
+    
+    @Column(name = "ACCNT_TYPE", nullable = false)
+    private String accntType;
 
     @Column(name = "ACCNT_OPEN_DATE")
     @CreationTimestamp
