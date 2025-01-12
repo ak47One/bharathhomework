@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Excel File Upload</title>
+	<!-- Link to the CSS file -->
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+	<div class="container">
+		<h2>Add KYC Details</h2>
+
+		<!-- Thymeleaf form for file upload -->
+		<form th:action="@{/addKycDocument}" th:object="${kycDTO}" method="POST">
+
+			<!-- Dropdown for Document Category -->
+			<div class="form-group">
+				<label for="docType">Select Document Type</label>
+				<select th:field="*{docType}" required>
+					<option value="Select Type" disabled selected>Select a Category</option>
+					<option th:each="option : ${docTypeList}" th:value="${option}" th:text="${option}"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="docUniqueId">Doc Unique Id</label>
+				<input type="text" th:field ="*{docUniqueId}" required>
+			</div>
+			<div class="form-group">
+				<label for="userId">UserId</label>
+				<input type="number" th:field="*{userId}"  min="1" max="10" required>
+			</div>
+
+			<!-- Submit Button -->
+			<button type="submit" class="btn btn-primary">Upload</button>
+		</form>
+	</div>
+
+	<!-- Link to JS file -->
+	<script src="/js/scripts.js"></script>
+</body>
+
+</html>
