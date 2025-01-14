@@ -9,7 +9,7 @@ import com.bank.app.DTO.KycDTO;
 import com.bank.app.model.KycDoc;
 import com.bank.app.model.Customer;
 import com.bank.app.repo.KycRepo;
-import com.bank.app.repo.UserRepo;
+import com.bank.app.repo.CustomerRepo;
 import com.bank.app.service.KycService;
 
 @Service
@@ -21,13 +21,13 @@ public class KycServiceImpl implements KycService {
 	private KycRepo kycRepo;
 
 	@Autowired
-	private UserRepo userRepo;
+	private CustomerRepo userRepo;
 
 	@Override
 	public String updateKYCData(KycDTO kycDTO) {
 
 		try {
-			Customer custmr = userRepo.findByUserId(Long.parseLong(kycDTO.getUserId()));
+			Customer custmr = userRepo.findByCustmrId(Long.parseLong(kycDTO.getUserId()));
 
 			KycDoc kycDoc = new KycDoc();
 			kycDoc.setDocumentType(kycDTO.getDocType().toUpperCase());
@@ -45,7 +45,7 @@ public class KycServiceImpl implements KycService {
 	@Override
 	public String getDocUniqueId(String typ, String usrId) {
 		try {
-			Customer custmr = userRepo.findByUserId(Long.parseLong(usrId));
+			Customer custmr = userRepo.findByCustmrId(Long.parseLong(usrId));
 //			KycDoc kycDoc = kycRepo.getDocUniqueId(user, typ);
 			kycRepo.getDocIdByImpl(custmr, typ);
 			

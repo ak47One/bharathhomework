@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bank.app.model.Customer;
-import com.bank.app.repo.UserRepo;
+import com.bank.app.repo.CustomerRepo;
+import com.bank.app.service.CustomerService;
 
 @Service
-public class UserServiceImpl {
+public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    private UserRepo repo;
+    private CustomerRepo repo;
 
     // Retrieve a user by ID
     public Customer getUser(Long id) {

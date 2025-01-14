@@ -40,7 +40,7 @@ public class KycRepoCustomImpl implements KycRepoCustom {
 
 			Query query = entityManager.createNativeQuery(sqlQuery);
 			query.setParameter(1, docType);
-			query.setParameter(2, custmr.getCustomerId());
+			query.setParameter(2, custmr.getCustmrId());
 
 			List<Object[]> dataList = query.getResultList();
 

@@ -8,19 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.bank.app.DTO.TransactionDTO;
 import com.bank.app.model.Transaction;
 import com.bank.app.model.Customer;
-import com.bank.app.repo.UserRepo;
+import com.bank.app.repo.CustomerRepo;
 import com.bank.app.service.TransactionService;
 import com.bank.app.utility.TransactionType;
 
 public class TransactionServiceImpl implements TransactionService{
 	
 	@Autowired
-	public UserRepo userRepo;
+	public CustomerRepo userRepo;
 
 	@Override
 	public String updtAccntBalance(TransactionDTO transDTO) {
 		
-		Customer custmr = userRepo.findByUserId(Long.parseLong(transDTO.getPayerId()));
+		Customer custmr = userRepo.findByCustmrId(Long.parseLong(transDTO.getPayerId()));
 		
 		Transaction trans = new Transaction();
 		

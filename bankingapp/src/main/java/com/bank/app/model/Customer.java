@@ -33,9 +33,9 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "CUSTOMER_ID")
+	@Column(name = "CUSTMR_ID")
 	@JsonIgnore
-	private Long customerId;
+	private Long custmrId;
 
 	@Column(name = "CUSTMR_FIRST_NAME", nullable = false)
 	private String custmrFirstName;
@@ -64,7 +64,7 @@ public class Customer {
 	@JsonIgnore
 	private Set<Loan> loans;
 
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "custmrObj", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
 	private AccountDetails accountDetails;
 

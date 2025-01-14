@@ -1,19 +1,16 @@
 package com.bank.app.repo;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.bank.app.model.Customer;
 
 @Repository
-public interface UserRepo extends JpaRepository<Customer, Long> {
+public interface CustomerRepo extends JpaRepository<Customer, Long> {
 
-	Customer findByUserId(Long userId);
+	Customer findByCustmrId(Long custmrId);
 
-	Customer findByEmailId(String emailId);
+	Customer findByCustmrEmailId(String emailId);
 
 	/*
 	 * @Query("SELECT usr.accntBalance FROM User usr WHERE usr.accntNum =?1") String
