@@ -1,37 +1,35 @@
 package com.bank.app.DTO;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-@JsonIgnoreProperties(ignoreUnknown = true)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class TransactionDTO {
-	
-	private Long transId;
-	
-	private BigDecimal transAmount;
-	
-	private String transType;
-	
-	private String paymentType;
-	
-	private String payeeAccntNo;
-	
+
 	private String payeeName;
 
+	private String payeeAccNo;
+
+	private String payerAccntNo;
+
+	private String payerName;
+
+	private Date transDate;
+
+	private String modeOfPayment;
+
+	private BigDecimal transAmount;
+
+	private String transType;
+	
 	private String transReferId;
-	
+
 	private String transStatus;
-	
-	private String payerId;
-	
-	private LocalDateTime transDate;
-	
-	
+
 }

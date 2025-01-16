@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "user_dtl")
+@Table(name = "custmr_dtl")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

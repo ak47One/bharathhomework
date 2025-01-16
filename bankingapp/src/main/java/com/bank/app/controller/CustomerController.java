@@ -11,51 +11,61 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bank.app.DTO.NewCustomerRegisterationDTO;
 import com.bank.app.model.Customer;
 import com.bank.app.service.CustomerService;
+import com.bank.app.service.RegistrationService;
 
 @RestController
 @RequestMapping("/api")
 public class CustomerController {
 
-    @Autowired
-    private CustomerService custmrService;
+	@Autowired
+	private CustomerService custmrService;
 
+	@Autowired
+	private RegistrationService regService;
 
-    @GetMapping("/testing")
-    public String test() {
-        return "Application is running!";
-    }
+	@GetMapping("/testing")
+	public String test() {
+		return "Application is running!";
+	}
 
-    @GetMapping("/user/{id}")
-    public Customer getUser(@PathVariable Long id) {
-        return custmrService.getUser(id);
-    }
+	@GetMapping("/user/{id}")
+	public Customer getUser(@PathVariable Long id) {
+		return custmrService.getUser(id);
+	}
 
+	@PostMapping("/user")
+	public Customer addUser(@RequestBody Customer user) {
+		if (user != null) {
+			return custmrService.addUser(user);
+		}
+		return null;
+	}
 
-    @PostMapping("/user")
-    public Customer addUser(@RequestBody Customer user) {
-    	if(user != null) {
-    	return custmrService.addUser(user);
-    	}
-        return null;
-    }
-     
-    @GetMapping("/checkBalance")
-    public String checkBalance(@RequestParam String accountNo) {
+	@GetMapping("/checkBalance")
+	public String checkBalance(@RequestParam String accountNo) {
 		return custmrService.checkBalance(accountNo);
-    	
-    }
-    @GetMapping("/last3Accnt")
-    public List<Customer> last3Accnt() {
+
+	}
+
+	@GetMapping("/last3Accnt")
+	public List<Customer> last3Accnt() {
 		return custmrService.last3acnt();
-    	
-    }
-    @GetMapping("/BankBal")
-    public String getBankBal() {
+
+	}
+
+	@GetMapping("/BankBal")
+	public String getBankBal() {
 		return custmrService.getBankBal();
-    	
-    }
-    
-    
+
+	}
+
+	@PostMapping("/newCustomerRegistration")
+	public String createCustomer(@RequestBody NewCustomerRegisterationDTO regDto) {
+		String cusAccountNo = regService.crateCustomerAndAccout(regDto);
+		return cusAccountNo;
+	}
+
 }

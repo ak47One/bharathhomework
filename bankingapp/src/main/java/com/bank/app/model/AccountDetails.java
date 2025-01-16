@@ -2,7 +2,6 @@ package com.bank.app.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -34,7 +33,7 @@ public class AccountDetails {
     private Long accntDtlId;
 
     @Column(name = "ACCNT_NUM", nullable = false, unique = true)
-    private String accntNum;
+    private String accntNo;
 
     @Column(name = "ACCNT_BAL", precision = 10, scale = 2)
     private BigDecimal accntBalance;

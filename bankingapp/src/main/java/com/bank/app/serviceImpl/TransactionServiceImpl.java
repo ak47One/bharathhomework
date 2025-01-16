@@ -20,7 +20,7 @@ public class TransactionServiceImpl implements TransactionService{
 	@Override
 	public String updtAccntBalance(TransactionDTO transDTO) {
 		
-		Customer custmr = userRepo.findByCustmrId(Long.parseLong(transDTO.getPayerId()));
+		Customer custmr = userRepo.findByCustmrId(Long.parseLong(transDTO.getPayeeAccNo()));
 		
 		Transaction trans = new Transaction();
 		

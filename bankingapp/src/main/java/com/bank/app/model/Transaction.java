@@ -46,7 +46,7 @@ public class Transaction {
 	private Date transDate;
 	
 	@Column(name="PAYMENT_TYPE")
-	private String paymentType;
+	private String modeOfPayment;
 	
 	@Column(name="TRANS_REF_ID")
 	private String transReferId;
@@ -68,7 +68,9 @@ public class Transaction {
 	@JoinColumn(name="CUSTMR_OBJECT", nullable = false)
 	private Customer custmrObj;
 	
-	@Transient
-	private String payerId;
+	
+	private String payerAccntNo;
+	
+	private String payerName;
 	
 }
