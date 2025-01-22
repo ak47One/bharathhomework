@@ -6,8 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.bank.app.DTO.KycDTO;
-import com.bank.app.model.KycDoc;
 import com.bank.app.model.Customer;
+import com.bank.app.model.KycDoc;
 import com.bank.app.repo.custom.KycRepoCustom;
 
 import jakarta.persistence.EntityManager;
