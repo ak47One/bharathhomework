@@ -11,9 +11,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.orm.jpa.EntityManagerFactoryInfo;
 import org.springframework.stereotype.Service;
 
 import com.bank.app.repo.UserRepo;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 
 @Service
@@ -23,6 +27,9 @@ public class LoanServiceImpl {
 
 	@Autowired
 	private ApplicationContext applicationContext;
+	
+	@PersistenceContext
+	EntityManager entityManager;
 	
 	@Autowired
 	private UserRepo userRepo;
@@ -49,6 +56,20 @@ public class LoanServiceImpl {
 		    }
 		} catch (SQLException e) {
 		    log.error("SQL Exception occurred", e);
+		}
+		return null;
+	}
+	
+	private String getDBConnectionEntityManager() {
+		//Getting datasource connection from entityManager
+		EntityManagerFactoryInfo info = (EntityManagerFactoryInfo) entityManager.getEntityManagerFactory();
+		
+		DataSource dataSource = info.getDataSource();
+		try (Connection connection = (null != dataSource) ? dataSource.getConnection()
+				: entityManager.unwrap(Connection.class)){
+			
+		} catch (SQLException e) {
+			log.error("SQL Exception Occurred");
 		}
 		return null;
 	}
