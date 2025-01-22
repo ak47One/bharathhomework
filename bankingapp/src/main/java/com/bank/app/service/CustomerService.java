@@ -17,5 +17,9 @@ public interface CustomerService {
     public List<Customer> last3acnt();
     
     public String getBankBal();
+    
+    public List<String> getAccntBalance();
+    
+    public List<Customer> getAllCus();
 }
 

@@ -3,12 +3,14 @@ package com.bank.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.app.DTO.NewCustomerRegisterationDTO;
@@ -16,12 +18,15 @@ import com.bank.app.model.Customer;
 import com.bank.app.service.CustomerService;
 import com.bank.app.service.RegistrationService;
 
+
 @RestController
 @RequestMapping("/api")
 public class CustomerController {
 
 	@Autowired
 	private CustomerService custmrService;
+
+	
 
 	@Autowired
 	private RegistrationService regService;
@@ -62,10 +67,22 @@ public class CustomerController {
 
 	}
 
+	@GetMapping("/getVipCus")
+	public List<String> getVipCus() {
+		return custmrService.getAccntBalance();
+
+	}
+ 
+	@ResponseStatus(value = HttpStatus.CREATED)
 	@PostMapping("/newCustomerRegistration")
 	public String createCustomer(@RequestBody NewCustomerRegisterationDTO regDto) {
 		String cusAccountNo = regService.crateCustomerAndAccout(regDto);
 		return cusAccountNo;
 	}
 
+	
+	@GetMapping("/getAllCustomer")
+	public List<Customer> getAllCus(){
+		return custmrService.getAllCus();
+	}
 }

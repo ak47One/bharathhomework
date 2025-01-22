@@ -46,8 +46,30 @@ public class CustomerServiceImpl implements CustomerService {
     	
     }
     
+    public List<String> getAccntBalance() {
+    	List<com.bank.app.model.Customer> cusList = repo.findAll();
+    	
+    	List<String> customer = cusList.stream().map(n->n.getAccountDetails()).sorted((c1,c2)->
+    	c2.getAccntBalance().compareTo(c1.getAccntBalance())).map(n->n.getCustmrObj().getCustmrFirstName()).limit(2).toList();
+    	
+    	return customer;
+    }
     
-    
+    public void getLowBalAccnt() {
+    	List<com.bank.app.model.Customer> cusList = repo.findAll();
+    	
+    	List<String> customer = cusList.stream().map(n->n.getAccountDetails()).sorted((c1,c2)->
+    	c2.getAccntBalance().compareTo(c1.getAccntBalance())).map(n->n.getCustmrObj().getCustmrFirstName()).limit(2).toList();
+    	
+    	System.out.println(customer);
+
+    }
+    public List<Customer> getAllCus(){
+    	System.out.println("Enterning into getAllCus method");
+    	List<Customer> allCustList = repo.findAll();
+    	System.out.println(allCustList.size());
+    	return allCustList;
+    }
   
 }
 

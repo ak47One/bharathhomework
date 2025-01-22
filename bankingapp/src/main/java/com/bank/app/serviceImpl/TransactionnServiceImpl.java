@@ -80,12 +80,16 @@ public class TransactionnServiceImpl implements TransactionnService {
 
 		try {
 			payerAccnt.setAccntBalance(avaliableBal.subtract(transAmount));
+			payeeAccnt.setAccntBalance(payeeAccnt.getAccntBalance().add(transAmount));
 			accountRepo.save(payerAccnt);
+			accountRepo.save(payeeAccnt);
+			
+			
 			transRepo.save(trans);
-			trans.setTransStatus("Success");
+			trans.setTransStatus(TransactionStatus.SUCCESS.name());
 			return " transaction is" + trans.getTransStatus();
 		} catch (Exception e) {
-			trans.setTransStatus("Faild");
+			trans.setTransStatus(TransactionStatus.FAILED.name());
 			throw new RuntimeException("Transaction faild" + e.getMessage());
 		}
 
@@ -110,5 +114,7 @@ public class TransactionnServiceImpl implements TransactionnService {
 
 		return uniqueId;
 	}
+	
+	
 
 }
